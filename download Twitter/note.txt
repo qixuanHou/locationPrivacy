@@ -1,0 +1,129 @@
+2016 5 31
+analyze twitter user @queencodemonkey
+
+steps:
+1. download most recent 124 tweets of @queencodemonkey
+	from Tue May 31 00:06:12 +0000 2016
+	to Sun Apr 17 04:41:13 +0000 2016
+
+2. read @queencodemonkey user profile
+	personal_page - "http://t.co/qMUzm3VuyQ",
+
+	--------what I get from profile--------
+	| Studied in University of Maryland with a BS and MS in Computer/Electrical Engineering
+	| Working in Denver, CO and (sometimes) Washington, DC
+	| Maryland + Colorado, USA
+	| time zone is Eastern Time (US&Canada)
+	----------------------------------------
+
+
+3. place field in tweet
+	12/124 (1%) has not null place field
+
+	Tue May 24 02:42:16 +0000 2016 - Sun May 22 01:49:49 +0000 2016
+		Denver, CO - working 
+
+	Sat May 21 19:20:12 +0000 2016
+		San Jose, CA - google #io16
+	Fri May 20 00:36:46 +0000 2016 - Wed May 18 22:32:45 +0000 2016
+		Mountain View, CA - google #io16
+	Tue May 17 00:40:55 +0000 2016
+		San Francisco, CA -  Udemy studio
+
+	Fri May 06 17:53:33 +0000 2016
+		Manhattan, NY - 
+	Sat May 07 14:31:44 +0000 2016
+		New Jersey, USA - NYC
+
+	Tue Apr 19 14:55:21 +0000 2016
+		Denver, CO - working 
+
+	--------what I get from place field--------
+	| April 17
+	| 	|		Denver, CO
+	| May 06
+	| 	|		Manhattan, NY / New Jersey, USA / NYC
+	| May 7
+	| 	|
+	| May 17
+	| 	|		San Jose, CA / Mountain View, CA(io16 google) / San Francisco (Udemy Studio)
+	| May 24
+	| 	| 		Denver, CO
+	| May 31
+	----------------------------------------
+
+
+
+4. find location from text
+	use stanford NER to extract location, organization, person from text and entities
+	http://nlp.stanford.edu/software/CRF-NER.shtml#Download
+
+
+
+	id = 735990869556236000
+		Wednesday, June 1, 2016 6:00 PM to 7:00 PM
+		Calle 67 Nº 52-20, Medellín, co
+		http://www.meetup.com/Medellin-Android/events/231395443/
+
+
+	id = 726471856098697000 --- find the location information from photo posted
+		Sat Apr 30 18:02:42 +0000 2016
+		location - some restuarant near Limelight Supper Club & Lounge, Curtis Street, Denver, CO
+		activity - 008 playdash
+
+	id = 735236007138759000
+		June 15 2016 - June 17 2016
+		https://droidcon.de/en/program/schedule
+		Berlin at Postbahnhof
+		she is one of the speakers in the conference
+
+	id = 730461042933793000
+		July 28 2016
+		Holiday Inn Express Denver Downtown ballroom A
+
+	id = 726081580792353000
+		Fri Apr 29 16:11:53 +0000 2016
+		Italy
+		https://t.co/8JgoyBWTQp a talk with android-er in Italy
+
+	--------what I get from text + place field--------
+	| April 17
+	| 	|		Denver, CO
+	| April 30 -- some restuarant near Limelight Supper Club & Lounge, Curtis Street, Denver, CO - playdash 008  
+	|	|
+	| May 06
+	| 	|		Manhattan, NY / New Jersey, USA / NYC
+	| May 7
+	| 	|
+	| May 17
+	| 	|		San Jose, CA / Mountain View, CA(io16 google) / San Francisco (Udemy Studio)
+	| May 24
+	| 	| 		Denver, CO
+	| May 31
+	|	|
+	| June 1 -- Calle 67 Nº 52-20, Medellín, co - attend a conference http://www.meetup.com/Medellin-Android/events/231395443/
+	|	|
+	| June 15
+	|	|		Berlin at Postbahnhof - she is one of the speakers in the conference https://droidcon.de/en/program/schedule
+	| July 28 -- Holiday Inn Express Denver Downtown ballroom A - speaker in the conference
+	|	|
+	----------------------------------------
+
+5. find location from friends 
+	I feel like her friends are all from andriod team all over the world. It is hard to use her friends' location infomation to guess her location information. 
+
+
+summary
+	These are steps I took to find as much as possible location information of @queencodemonkey.
+	I randomly picked @queencodemonkey as my target to study and retrieved 100 tweets of her (original + retweeted). 
+	What I found interesting are:
+		1. users with more tweets are always public figures, such singers, writers, or other famous people in his or her fields. Others rarely post on Twitter. 
+		2. All inforamtion about places is city level inforamtion, such Denver, NYC, or San Francisco. It is really hard to find coordinates or more specific location information. 
+		3. Sometimes using image to analyze the location is the way to tackle it. I found the restaurant name from a image @queencodemonkey posted. However, I am not sure whether there are methods to let computers analyze images to retrieve location inforamtion. 
+		4. Using friends to analyze location is definely the way but I feel like it is hard to apply here. On Twitter, people always follow famous figures or people they do not actually know in person. It is rarely that their friends are in the same city as they are. @queencodemonkey has most friends in Android field all over the world. It is hard to find information about location from her friends. 
+
+		
+	
+
+
+

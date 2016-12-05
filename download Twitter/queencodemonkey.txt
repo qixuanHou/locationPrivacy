@@ -1,0 +1,45 @@
+2016 5 31
+analyze twitter user @queencodemonkey
+
+steps:
+1. download most recent 124 tweets of @queencodemonkey
+	from Tue May 31 00:06:12 +0000 2016
+	to Sun Apr 17 04:41:13 +0000 2016
+
+2. read @queencodemonkey user profile
+	personal_page - "http://t.co/qMUzm3VuyQ",
+
+	--------what I get from profile--------
+	| Studied in University of Maryland with a BS and MS in Computer/Electrical Engineering
+	| Working in Denver, CO and (sometimes) Washington, DC
+	| Maryland + Colorado, USA
+	| time zone is Eastern Time (US&Canada)
+	----------------------------------------
+
+
+3. place field in tweet
+	12/124 (1%) has not null place field
+
+	Tue May 24 02:42:16 +0000 2016 - Sun May 22 01:49:49 +0000 2016
+		Denver, CO - working 
+
+	Sat May 21 19:20:12 +0000 2016
+		San Jose, CA - google #io16
+	Fri May 20 00:36:46 +0000 2016 - Wed May 18 22:32:45 +0000 2016
+		Mountain View, CA - google #io16
+	Tue May 17 00:40:55 +0000 2016
+		San Francisco, CA -  Udemy studio
+
+	Fri May 06 17:53:33 +0000 2016
+		Manhattan, NY - 
+	Sat May 07 14:31:44 +0000 2016
+		New Jersey, USA - NYC
+
+	Tue Apr 19 14:55:21 +0000 2016
+		Denver, CO - working 
+
+	--------what I get from place field--------
+	| April
+	----------------------------------------
+4. find location from text
+	http://nlp.stanford.edu/software/CRF-NER.shtml#Download
